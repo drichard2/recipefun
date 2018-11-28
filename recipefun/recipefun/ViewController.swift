@@ -20,7 +20,7 @@ class ViewController: UIViewController, WKNavigationDelegate{
         super.viewDidLoad()
         
         // 1
-        let url = URL(string: "https://www.youtube.com/watch?v=yEcUlJO-pZ4")!
+        let url = URL(string: "https://reddit.com")!
         webView.load(URLRequest(url: url))
         
         // 2
