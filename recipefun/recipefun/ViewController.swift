@@ -12,15 +12,17 @@ import WebKit
 
 class ViewController: UIViewController, WKNavigationDelegate{
     
-    var webView: WKWebView!
-
+    @IBOutlet var webView: WKWebView!
+    
+    var videoCode: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         super.viewDidLoad()
         
         // 1
-        let url = URL(string: "https://google.com")!
+        let url = URL(string: "https://www.youtube.com/embed/\(videoCode!)")!
         webView.load(URLRequest(url: url))
         
         // 2

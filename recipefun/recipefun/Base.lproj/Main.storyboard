@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fwu-N6-Dw6">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,39 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Menu View Controller-->
+        <scene sceneID="hIG-hv-Pv7">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Gc-xO-B0h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="wE8-ey-lGH" customClass="MenuViewController" customModule="recipefun" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ggn-2H-nmb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foz-ip-XA0">
+                                <rect key="frame" x="120" y="545" width="135" height="7"/>
+                                <state key="normal" title="Watch Video"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="videoSegue" id="dQj-id-HjH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="foz-ip-XA0" firstAttribute="top" secondItem="dx3-AF-Zev" secondAttribute="top" constant="481" id="KSh-ho-xxd"/>
+                            <constraint firstItem="dx3-AF-Zev" firstAttribute="bottom" secondItem="foz-ip-XA0" secondAttribute="bottom" constant="115" id="aeC-HW-EUe"/>
+                            <constraint firstItem="foz-ip-XA0" firstAttribute="leading" secondItem="dx3-AF-Zev" secondAttribute="leading" constant="120" id="g2C-Qi-sry"/>
+                            <constraint firstItem="dx3-AF-Zev" firstAttribute="trailing" secondItem="foz-ip-XA0" secondAttribute="trailing" constant="120" id="hxB-bL-VRQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dx3-AF-Zev"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YsR-fi-bPe">
+                        <barButtonItem key="backBarButtonItem" title="Back to Recipe" id="j5N-B4-cQE"/>
+                    </navigationItem>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1826.4000000000001" y="41.829085457271368"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -18,9 +51,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sqP-X7-oX7">
-                                <rect key="frame" x="7" y="39" width="352" height="608"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqP-X7-oX7">
+                                <rect key="frame" x="16" y="80" width="343" height="571"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -29,15 +61,41 @@
                             </wkWebView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sqP-X7-oX7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="DVG-U1-Vx1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sqP-X7-oX7" secondAttribute="bottom" constant="16" id="DpG-bu-tgH"/>
+                            <constraint firstItem="sqP-X7-oX7" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="80" id="UzF-Mk-5W5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sqP-X7-oX7" secondAttribute="trailing" constant="16" id="wZU-34-YWG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="myWebView" destination="sqP-X7-oX7" id="HXC-PN-dIH"/>
                         <outlet property="view" destination="sqP-X7-oX7" id="ReI-g3-5lF"/>
+                        <outlet property="webView" destination="sqP-X7-oX7" id="v5J-9e-RWi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
+            <point key="canvasLocation" x="2620" y="43.628185907046479"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8xl-MK-Qkl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fwu-N6-Dw6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rjM-ct-XQt">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wE8-ey-lGH" kind="relationship" relationship="rootViewController" id="Wom-0p-agY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="38o-b8-y5R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="887.20000000000005" y="41.829085457271368"/>
         </scene>
     </scenes>
 </document>
