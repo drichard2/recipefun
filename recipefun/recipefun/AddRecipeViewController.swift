@@ -1,69 +1,75 @@
 //
-//  MenuViewController.swift
+//  AddRecipeViewController.swift
 //  recipefun
 //
-//  Created by user145850 on 11/27/18.
+//  Created by McKenzie, Thomas Patrick on 12/8/18.
 //  Copyright © 2018 Daniel Richard. All rights reserved.
 //
 
 import UIKit
-import CoreData
 
-class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
-    
-    var recipeArray = [Recipe]()
+class AddRecipeViewController: UIViewController {
+    var recipe: Recipe? = nil
 
-    
-    
-    
 
     
     
-    
-    @IBOutlet weak var tableView: UITableView!
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        recipeArray.append(Recipe(meal: "d", mealThumb:"https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png", category:"f",instructions:  "h", youTubeUrl: "H", area:"f", mealID: "j"  ))
-        
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let entity = NSEntityDescription.extity(forEntityName: "Entity", in: context)
-        
-        
-        
-        
-        
+        recipe = getRecipe()
+        updateView()
+        print(recipe?.mealThumb)
+        loadImage(imageURL: (recipe?.mealThumb)!)
         // Do any additional setup after loading the view.
     }
+    @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var areaLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0{
-            return recipeArray.count
-        }
-        return 0
-        }
+    @IBOutlet weak var mealLabel: UILabel!
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeTableViewCell
-        
-        let recipe = recipeArray[indexPath.row]
-        cell.update(with: recipe)
-        
-        cell.showsReorderControl = true
-        
-        // return the cell
-        return cell
-        
+    @IBOutlet weak var instructionsView: UITextView!
+    @IBAction func saveButton(_ sender: Any) {
+    }
+    @IBAction func viewVideoButton(_ sender: Any) {
+       
+    }
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+    
+    func updateView() {
+        areaLabel.text = recipe?.area
+        categoryLabel.text = recipe?.category
+        mealLabel.text = recipe?.meal
+        instructionsView.text = recipe?.instructions
+
     }
     
+    func loadImage (imageURL: String){
+        let url = URL(string: imageURL)
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!)
+            DispatchQueue.main.async {
+                self.imageView.image = UIImage(data: data!)
+            }
+        }
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "showVideoSegue"){
+            let websiteController = segue.destination as! ViewController
+            websiteController.videoCode = recipe?.youTubeUrl
+        }}
     
-    @IBAction func addRecipe(_ sender: Any) {
         func getRecipe() -> Recipe{
             
             
@@ -96,7 +102,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 recipe.mealID = item["idMeal"] as! String
                 recipe.instructions = item["strInstructions"] as! String
                 recipe.meal = item["strMeal"] as! String
-                recipe.mealThumb = item["strMeal"] as! String
+                recipe.mealThumb = item["strMealThumb"] as! String
                 recipe.youTubeUrl = item["strYoutube"] as! String
                 
             }
@@ -107,28 +113,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             
         }
-    
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
-        if(segue.identifier == "videoSegue"){
-        let websiteController = segue.destination as! ViewController
-        websiteController.videoCode = "NKtR3KpS83w"
-        }
-        if(segue.identifier == "detailSegue") {
-            // need a reference to the DogDetailViewController that is about to be shown
-            if let recipeDetailVC = segue.destination as? RecipeDetailViewController {
-                
-                // get the dog that was selected
-                if let indexPath = tableView.indexPathForSelectedRow {
-                    let recipe = recipeArray[indexPath.row]
-                    recipeDetailVC.recipe = recipe
-                }
-            }
-        }
-        
         
     }
-}
+    
+

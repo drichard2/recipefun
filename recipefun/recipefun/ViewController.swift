@@ -8,11 +8,14 @@
 
 import UIKit
 import WebKit
+import CoreData
 
 
 class ViewController: UIViewController, WKNavigationDelegate{
     
     @IBOutlet var webView: WKWebView!
+    
+    
     
     var videoCode: String?
     
@@ -22,7 +25,7 @@ class ViewController: UIViewController, WKNavigationDelegate{
         super.viewDidLoad()
         
         // 1
-        let url = URL(string: "https://www.youtube.com/embed/\(videoCode!)")!
+        let url = URL(string: videoCode!)!
         webView.load(URLRequest(url: url))
         
         // 2
