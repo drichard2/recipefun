@@ -12,8 +12,9 @@ import CoreData
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     var recipeArray = [Recipe]()
+ 
 
-    
+
     
     
 
@@ -26,19 +27,35 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let randomFilename = UUID().uuidString
+        let fullPath = getDocumentsDirectory().appendingPathComponent(randomFilename)
+        
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: recipeArray, requiringSecureCoding: false)
+            try data.write(to: fullPath)
+        } catch {
+            print("Couldn't write file")
+        }
+        
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: recipeArray, requiringSecureCoding: false)
+            if let loadedStrings = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [String] {
+                recipeArray = loadedStrings as! [Recipe]()
+            }
+        } catch {
+            print("Couldn't read file.")
+        }
+        
         recipeArray.append(Recipe(meal: "d", mealThumb:"https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png", category:"f",instructions:  "h", youTubeUrl: "H", area:"f", mealID: "j"  ))
         
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let entity = NSEntityDescription.extity(forEntityName: "Entity", in: context)
-        
-        
-        
-        
-        
-        // Do any additional setup after loading the view.
+
+
     }
     
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{

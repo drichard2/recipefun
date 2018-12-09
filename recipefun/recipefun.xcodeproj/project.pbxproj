@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B121DB121BC8EE4004D7F4E /* array.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B121DB021BC8EE4004D7F4E /* array.plist */; };
 		3B761A0A21AE2C5500E0C92B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B761A0921AE2C5500E0C92B /* AppDelegate.swift */; };
 		3B761A0C21AE2C5500E0C92B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B761A0B21AE2C5500E0C92B /* ViewController.swift */; };
 		3B761A0F21AE2C5500E0C92B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B761A0D21AE2C5500E0C92B /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B121DB021BC8EE4004D7F4E /* array.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = array.plist; sourceTree = "<group>"; };
 		3B761A0621AE2C5500E0C92B /* recipefun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = recipefun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B761A0921AE2C5500E0C92B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B761A0B21AE2C5500E0C92B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				3B761A1021AE2C5700E0C92B /* Assets.xcassets */,
 				3B761A1221AE2C5700E0C92B /* LaunchScreen.storyboard */,
 				3B761A1521AE2C5700E0C92B /* Info.plist */,
+				3B121DB021BC8EE4004D7F4E /* array.plist */,
 				3B761A0B21AE2C5500E0C92B /* ViewController.swift */,
 				C72BBE7A21BC5E570021B26B /* Recipe.swift */,
 				C72BBE7C21BC61690021B26B /* RecipeTableViewCell.swift */,
@@ -247,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B121DB121BC8EE4004D7F4E /* array.plist in Resources */,
 				3B761A1421AE2C5700E0C92B /* LaunchScreen.storyboard in Resources */,
 				3B761A1121AE2C5700E0C92B /* Assets.xcassets in Resources */,
 				3B761A0F21AE2C5500E0C92B /* Main.storyboard in Resources */,

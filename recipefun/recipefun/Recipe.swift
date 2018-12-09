@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class Recipe{
+class Recipe: NSObject{
 
     var area: String
     var category: String
@@ -28,5 +28,30 @@ class Recipe{
         self.youTubeUrl = youTubeUrl
         self.area = area
         self.mealID = mealID
+    }
+    
+    
+    
+    func encodeWithCoder(aCoder: NSCoder!) {
+        aCoder.encode(self.area, forKey:"area")
+        aCoder.encode(self.category, forKey:"category")
+        aCoder.encode(self.instructions, forKey:"instructions")
+        aCoder.encode(self.meal, forKey:"meal")
+        aCoder.encode(self.mealThumb, forKey:"mealThumb")
+        aCoder.encode(self.youTubeUrl, forKey:"youtTubeUrl")
+        aCoder.encode(self.mealID, forKey:"mealID")
+    }
+    
+    
+    init (coder aDecoder: NSCoder!) {
+        self.area = aDecoder.decodeObject(forKey: "area") as! String
+        self.category = aDecoder.decodeObject(forKey: "category") as! String
+        self.instructions = aDecoder.decodeObject(forKey: "instructions") as! String
+        self.meal = aDecoder.decodeObject(forKey: "meal") as! String
+        self.mealThumb = aDecoder.decodeObject(forKey: "mealThumb") as! String
+        self.youTubeUrl = aDecoder.decodeObject(forKey: "youTubeUrl") as! String
+        self.mealID = aDecoder.decodeObject(forKey: "mealID") as! String
+        
+
     }
 }
