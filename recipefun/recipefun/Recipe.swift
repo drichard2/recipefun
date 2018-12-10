@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class Recipe: NSObject{
+class Recipe: Codable{
 
     var area: String
     var category: String
@@ -31,27 +31,31 @@ class Recipe: NSObject{
     }
     
     
+    static let recipePListURL: URL = {
+        // this is called an initialization closure
+        // get a URL to the documents directory
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        // .userDomainMask refers to the user's home directory
+        let fileURL = documentsDirectory.appendingPathComponent("recipes").appendingPathExtension("plist")
+        return fileURL
+    }()
     
-    func encodeWithCoder(aCoder: NSCoder!) {
-        aCoder.encode(self.area, forKey:"area")
-        aCoder.encode(self.category, forKey:"category")
-        aCoder.encode(self.instructions, forKey:"instructions")
-        aCoder.encode(self.meal, forKey:"meal")
-        aCoder.encode(self.mealThumb, forKey:"mealThumb")
-        aCoder.encode(self.youTubeUrl, forKey:"youtTubeUrl")
-        aCoder.encode(self.mealID, forKey:"mealID")
+    static func saveToFile(recipes: [Recipe]) {
+        let plistEncoder = PropertyListEncoder()
+        
+        if let recipesData = try? plistEncoder.encode(recipes) {
+            // Data is a byte representation
+            // that we can use to write and read to/from disk
+            try? recipesData.write(to: recipePListURL)
+        }
     }
     
-    
-    init (coder aDecoder: NSCoder!) {
-        self.area = aDecoder.decodeObject(forKey: "area") as! String
-        self.category = aDecoder.decodeObject(forKey: "category") as! String
-        self.instructions = aDecoder.decodeObject(forKey: "instructions") as! String
-        self.meal = aDecoder.decodeObject(forKey: "meal") as! String
-        self.mealThumb = aDecoder.decodeObject(forKey: "mealThumb") as! String
-        self.youTubeUrl = aDecoder.decodeObject(forKey: "youTubeUrl") as! String
-        self.mealID = aDecoder.decodeObject(forKey: "mealID") as! String
+    static func loadFromFile() -> [Recipe]? {
+        let plistDecoder = PropertyListDecoder()
         
-
+        if let recipesData = try? Data(contentsOf: recipePListURL), let decodedRecipes = try? plistDecoder.decode([Recipe].self, from: recipesData) {
+            return decodedRecipes
+        }
+        return nil
     }
 }

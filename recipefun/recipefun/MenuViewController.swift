@@ -11,11 +11,13 @@ import CoreData
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
-    var recipeArray = [Recipe]()
- 
 
 
-    
+    var recipeArray = [Recipe]() {
+        didSet {
+            Recipe.saveToFile(recipes: recipeArray)
+        }
+    }
     
 
     
@@ -26,35 +28,34 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let randomFilename = UUID().uuidString
-        let fullPath = getDocumentsDirectory().appendingPathComponent(randomFilename)
         
-        do {
-            let data = try NSKeyedArchiver.archivedData(withRootObject: recipeArray, requiringSecureCoding: false)
-            try data.write(to: fullPath)
-        } catch {
-            print("Couldn't write file")
-        }
+        initializeDogs()
         
-        do {
-            let data = try NSKeyedArchiver.archivedData(withRootObject: recipeArray, requiringSecureCoding: false)
-            if let loadedStrings = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [String] {
-                recipeArray = loadedStrings as! [Recipe]()
-            }
-        } catch {
-            print("Couldn't read file.")
-        }
-        
-        recipeArray.append(Recipe(meal: "d", mealThumb:"https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png", category:"f",instructions:  "h", youTubeUrl: "H", area:"f", mealID: "j"  ))
-        
-
 
     }
     
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
+    func initializeDogs() {
+        if let recipes = Recipe.loadFromFile() {
+            self.recipeArray = recipes
+        }
+    }
+    
+    @IBAction func unwindToRecipeTableVC(segue: UIStoryboardSegue) {
+        print("unwinding")
+        // get the dog if there is one from dogDetailViewController
+        if let identifier = segue.identifier {
+            if identifier == "saveRecipe" {
+                if let recipeDetailVC = segue.source as? AddRecipeViewController {
+                    if let recipe = recipeDetailVC.recipe {
+                        // is this a dog we were editing or a new dog?
+                            print(recipe)
+                            recipeArray.append(recipe)
+                            self.tableView.reloadData()
+                        
+                    }
+                }
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,6 +79,13 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            recipeArray.remove(at: indexPath.row)
+            // MARK: LAB #20.a.
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
     
     
     @IBAction func addRecipe(_ sender: Any) {

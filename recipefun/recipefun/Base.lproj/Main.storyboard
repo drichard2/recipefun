@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wE8-ey-lGH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wE8-ey-lGH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,8 +25,16 @@
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="videoSegue" id="dQj-id-HjH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="addRecipe" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDG-uv-613">
+                                <rect key="frame" x="148" y="622" width="78" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Recipe"/>
+                                <connections>
+                                    <segue destination="UjN-l3-gQD" kind="show" id="szh-O5-buN"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ArY-So-bAY">
-                                <rect key="frame" x="0.0" y="64" width="375" height="550"/>
+                                <rect key="frame" x="0.0" y="58" width="375" height="550"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -38,14 +46,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="208" translatesAutoresizingMaskIntoConstraints="NO" id="VxG-1w-4ui">
-                                                    <rect key="frame" x="0.0" y="0.0" width="306" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="353" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gkl-fM-Bp8">
-                                                            <rect key="frame" x="0.0" y="0.0" width="56" height="50"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gkl-fM-Bp8">
+                                                            <rect key="frame" x="0.0" y="0.0" width="103" height="50"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDM-8p-OhD">
-                                                            <rect key="frame" x="264" y="0.0" width="42" height="50"/>
+                                                            <rect key="frame" x="311" y="0.0" width="42" height="50"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -66,21 +74,13 @@
                                     <outlet property="delegate" destination="wE8-ey-lGH" id="1lm-vG-TFu"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="addRecipe" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDG-uv-613">
-                                <rect key="frame" x="148" y="622" width="78" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Recipe"/>
-                                <connections>
-                                    <segue destination="UjN-l3-gQD" kind="show" id="szh-O5-buN"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dx3-AF-Zev"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gjj-4X-pdB">
-                        <barButtonItem key="backBarButtonItem" title="Back to Recipe" id="NoE-dx-iHY"/>
-                        <barButtonItem key="rightBarButtonItem" title="+" id="nE6-jp-Z13"/>
+                    <navigationItem key="navigationItem" id="VIS-3D-mYT">
+                        <barButtonItem key="backBarButtonItem" title="Back to Recipe" id="NJu-kw-sTC"/>
+                        <barButtonItem key="rightBarButtonItem" title="+" id="gAE-KO-4KX"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ArY-So-bAY" id="7ho-51-xve"/>
@@ -88,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Gc-xO-B0h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1442" y="-35"/>
+            <point key="canvasLocation" x="1440.8" y="-35.532233883058474"/>
         </scene>
         <!--Recipe Detail View Controller-->
         <scene sceneID="Wik-Db-L6n">
@@ -153,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mj0-1e-goq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3101.5999999999999" y="41.829085457271368"/>
+            <point key="canvasLocation" x="2737" y="-766"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -163,8 +163,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqP-X7-oX7">
-                                <rect key="frame" x="16" y="80" width="343" height="571"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zR5-G9-mtt">
+                                <rect key="frame" x="159" y="597" width="58" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go Back"/>
+                                <connections>
+                                    <action selector="goBack" destination="dkx-z0-nzr" eventType="touchUpInside" id="LJd-t4-bpg"/>
+                                </connections>
+                            </button>
+                            <wkWebView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sqP-X7-oX7">
+                                <rect key="frame" x="55" y="77" width="267" height="324"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -174,10 +182,8 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="sqP-X7-oX7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="DVG-U1-Vx1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sqP-X7-oX7" secondAttribute="bottom" constant="16" id="DpG-bu-tgH"/>
-                            <constraint firstItem="sqP-X7-oX7" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="80" id="UzF-Mk-5W5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sqP-X7-oX7" secondAttribute="trailing" constant="16" id="wZU-34-YWG"/>
+                            <constraint firstItem="sqP-X7-oX7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="1" id="GcN-W6-0VX"/>
+                            <constraint firstItem="sqP-X7-oX7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-94.5" id="t7n-ua-dyy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -189,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3926" y="42"/>
+            <point key="canvasLocation" x="3925.5999999999999" y="41.829085457271368"/>
         </scene>
         <!--Add Recipe View Controller-->
         <scene sceneID="Kuq-9e-kpi">
@@ -222,19 +228,11 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHC-7w-8T5">
-                                <rect key="frame" x="145" y="578" width="84" height="30"/>
+                                <rect key="frame" x="145" y="578" width="84" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save Recipe"/>
                                 <connections>
-                                    <action selector="saveButton:" destination="UjN-l3-gQD" eventType="touchUpInside" id="YM4-T0-dPN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6e-Qc-G3v">
-                                <rect key="frame" x="149" y="616.5" width="77" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="View Video"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="showVideoSegue" id="Ul9-zA-i8G"/>
+                                    <segue destination="GOh-iu-zbe" kind="unwind" identifier="saveRecipe" unwindAction="unwindToRecipeTableVCWithSegue:" id="5Xi-tQ-UTU"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdE-Pd-JzM">
@@ -248,6 +246,14 @@
                                 <rect key="frame" x="16" y="64" width="343" height="192"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6e-Qc-G3v">
+                                <rect key="frame" x="149" y="617" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="View Video"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="showVideoSegue" id="Ul9-zA-i8G"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ztQ-NM-hH5"/>
@@ -261,8 +267,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="47T-p5-3Fh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="GOh-iu-zbe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2469.5999999999999" y="41.829085457271368"/>
+            <point key="canvasLocation" x="2304.8000000000002" y="972.86356821589209"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8xl-MK-Qkl">
@@ -284,6 +291,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RcW-Xu-Van"/>
+        <segue reference="dQj-id-HjH"/>
     </inferredMetricsTieBreakers>
 </document>

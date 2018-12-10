@@ -11,7 +11,6 @@ import UIKit
 class AddRecipeViewController: UIViewController {
     var recipe: Recipe? = nil
 
-
     
     
     override func viewDidLoad() {
@@ -68,9 +67,14 @@ class AddRecipeViewController: UIViewController {
         if(segue.identifier == "showVideoSegue"){
             let websiteController = segue.destination as! ViewController
             websiteController.videoCode = recipe?.youTubeUrl
-        }}
+        }
+        
+        
+        
+        
+    }
     
-        func getRecipe() -> Recipe{
+    func getRecipe() -> Recipe{
             
             
             let url = URL(string: "https://www.themealdb.com/api/json/v1/1/random.php")!
